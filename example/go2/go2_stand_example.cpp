@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <stdio.h>
 #include <stdint.h>
@@ -34,7 +35,7 @@ private:
     void LowStateMessageHandler(const void* messages);
     void LowCmdWrite();
     int queryMotionStatus();
-    std::string queryServiceName(std::string form,std::string name);
+    std::string queryServiceName(std::string form, std::string name);
  
 private:
     float Kp = 60.0;
@@ -300,7 +301,6 @@ void Custom::LowCmdWrite()
     
         lowcmd_publisher->Write(low_cmd);
     }
-   
 }
 
 int main(int argc, const char** argv)
