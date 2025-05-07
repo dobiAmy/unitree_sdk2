@@ -34,7 +34,7 @@ private:
     void LowStateMessageHandler(const void* messages);
     void LowCmdWrite();
     int queryMotionStatus();
-    std::string queryServiceName(std::string form,std::string name);
+    std::string queryServiceName(std::string form, std::string name);
  
 private:
     float Kp = 60.0;
@@ -141,6 +141,13 @@ void Custom::Init()
         sleep(5);
     }
 }
+    // Activate motion mode (필수!)
+    int32_t ret = msc.ActivateMode();
+    if (ret == 0) {
+        std::cout << "ActivateMode succeeded." << std::endl;
+    } else {
+        std::cout << "ActivateMode failed. Error code: " << ret << std::endl;
+    }
 
 void Custom::InitLowCmd()
 {
@@ -300,7 +307,6 @@ void Custom::LowCmdWrite()
     
         lowcmd_publisher->Write(low_cmd);
     }
-   
 }
 
 int main(int argc, const char** argv)
