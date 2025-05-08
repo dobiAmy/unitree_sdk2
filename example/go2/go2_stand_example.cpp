@@ -141,7 +141,13 @@ void Custom::Init()
         sleep(5);
     }
 }
-
+    int32_t ret = msc.ActivateMode();
+    if (ret == 0) {
+        std::cout << "ActivateMode succeeded." << std::endl;
+    } else {
+        std::cout << "ActivateMode failed. Error code: " << ret << std::endl;
+    }
+}
 void Custom::InitLowCmd()
 {
     low_cmd.head()[0] = 0xFE;
